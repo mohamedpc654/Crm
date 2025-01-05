@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+const REACT_APP_URL=import.meta.env.REACT_APP_URL
 // Get the token from local storage
 const getToken = () => {
     return localStorage.getItem('token'); // Retrieve the token from local storage
@@ -8,7 +8,7 @@ const getToken = () => {
 // Get all users
 export const getUsers = async () => {
     const token = getToken(); // Get the token
-    return await axios.get('http://localhost:4000/api/admin/users', {
+    return await axios.get(`${REACT_APP_URL}/api/admin/users`, {
         headers: {
             Authorization: `Bearer ${token}`, // Include the token in the Authorization header
         },
@@ -18,7 +18,7 @@ export const getUsers = async () => {
 // Create a new user
 export const createUser  = async (userData) => {
     const token = getToken(); // Get the token
-    return await axios.post('http://localhost:4000/api/admin/users', userData, {
+    return await axios.post(`${REACT_APP_URL}/api/admin/users`, userData, {
         headers: {
             Authorization: `Bearer ${token}`, // Include the token in the Authorization header
         },
@@ -28,7 +28,7 @@ export const createUser  = async (userData) => {
 // Update a user
 export const updateUser  = async (id, userData) => {
     const token = getToken(); // Get the token
-    return await axios.put(`http://localhost:4000/api/admin/users/${id}`, userData, {
+    return await axios.put(`${REACT_APP_URL}/api/admin/users/${id}`, userData, {
         headers: {
             Authorization: `Bearer ${token}`, // Include the token in the Authorization header
         },
@@ -38,7 +38,7 @@ export const updateUser  = async (id, userData) => {
 // Delete a user
 export const deleteUser  = async (id) => {
     const token = getToken(); // Get the token
-    return await axios.delete(`http://localhost:4000/api/admin/users/${id}`, {
+    return await axios.delete(`${REACT_APP_URL}/api/admin/users/${id}`, {
         headers: {
             Authorization: `Bearer ${token}`, // Include the token in the Authorization header
         },
@@ -48,7 +48,7 @@ export const deleteUser  = async (id) => {
 // Get user by ID
 export const getUserById = async (id) => {
     const token = getToken(); // Get the token
-    return await axios.get(`http://localhost:4000/api/admin/users/${id}`, {
+    return await axios.get(`${REACT_APP_URL}/api/admin/users/${id}`, {
         headers: {
             Authorization: `Bearer ${token}`, // Include the token in the Authorization header
         },
