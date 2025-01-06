@@ -5,24 +5,21 @@
     {
       "src": "server.js",
       "use": "@vercel/node",
-      "config": {
-        "runtime": "nodejs14.x"
-      }
+      
     },
     {
-      "src": "src/index.html",
-      "use": "@vercel/static-build",
-      "dest": "public"
-    }
+            "src": "src/**/*",
+            "use":"@vercel/static"
+        }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "server.js"
+      
     },
     {
       "src": "/(.*)",
-      "dest": "public/index.html"
+      "dest": "server.js"
     }
   ]
 }
